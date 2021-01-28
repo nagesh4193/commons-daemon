@@ -30,7 +30,10 @@ jdk:
 # Java 12 onwards doesn't support building for Java 6
 #  - openjdk12
 #  - openjdk-ea
-  
+
+arch:
+   - amd64
+   - ppc64le
 
 after_success:
   - mvn -V clean cobertura:cobertura coveralls:report --no-transfer-progress
