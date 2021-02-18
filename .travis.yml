@@ -32,17 +32,17 @@ jdk:
 #  - openjdk-ea
 
 jobs:
-  include:
-    - jdk: openjdk15
+  exclude:
+    - jdk: oraclejdk11
       arch: ppc64le
-      dist: focal
-    - jdk: openjdk8
-      arch: ppc64le
-      dist: focal
-    - jdk: openjdk11
-      arch: ppc64le
-      dist: focal
 
+before_script:
+  - sudo apt update -y
+  - sudo apt-get install maven
+
+arch:
+  - amd64
+  - ppc64le
 
 after_success:
   - mvn -V clean cobertura:cobertura coveralls:report --no-transfer-progress
